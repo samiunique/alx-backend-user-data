@@ -26,16 +26,16 @@ elif getenv('AUTH_TYPE') == "basic_auth":
 
 @app.before_request
 def filter_request():
-    """ filter the request 
+    """ filter the request
     """
     if auth is None:
         return
 
     excluded_paths = [
-        '/api/v1/status/',
-        '/api/v1/unauthorized/',
-        '/api/v1/forbidden/'
-    ]
+            '/api/v1/status/',
+            '/api/v1/unauthorized/',
+            '/api/v1/forbidden/'
+            ]
     if not auth.require_auth(request.path, excluded_paths):
         return
 
@@ -60,20 +60,18 @@ def unauthorized_request(error) -> str:
 
     return jsonify({
         "error": "Unauthorized"
-    }), 401
+        }), 401
 
-
-@app.errorhandler(403)
+    @app.errorhandler(403)
 def forbidden_request(error) -> str:
     """ Forbidden request
     """
 
     return jsonify({
         "error": "Forbidden"
-    }), 403
+        }), 403
 
-
-if __name__ == "__main__":
-    host = getenv("API_HOST", "0.0.0.0")
+    if __name__ == "__main__":
+        host = getenv("API_HOST", "0.0.0.0")
     port = getenv("API_PORT", "5000")
     app.run(host=host, port=port)
