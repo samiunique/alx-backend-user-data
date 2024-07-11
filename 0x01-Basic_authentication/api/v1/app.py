@@ -26,7 +26,8 @@ elif getenv('AUTH_TYPE') == "basic_auth":
 
 @app.before_request
 def filter_request():
-    """ Not found handler
+    """
+    filter request Not found handler
     """
     if auth is None:
         return
