@@ -26,7 +26,7 @@ elif getenv('AUTH_TYPE') == "basic_auth":
 
 @app.before_request
 def filter_request():
-    """ handel the filter request that will be used in the before_request
+    """ handel the filter request that will be used in the before_request hhhhhhhh hhh hhhh hhhh hhhh hhh hhh 
     """
     if auth is None:
         return
